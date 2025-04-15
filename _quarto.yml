@@ -1,0 +1,30 @@
+project:
+  type: website
+
+website:
+  title: "My Data Portfolio"
+  navbar:
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "About"
+        href: about.qmd
+      - text: "Projects"
+        menu: 
+          - text: "Project 1"
+            href: projects/project1.qmd
+          - text: "Project 2"
+            href: projects/project2.qmd
+          - text: "Project 3"
+            href: projects/project3.qmd
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+    toc: true
+
+
+

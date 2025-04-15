@@ -1,0 +1,51 @@
+[
+  {
+    "objectID": "projects/project1.html",
+    "href": "projects/project1.html",
+    "title": "RMD sample",
+    "section": "",
+    "text": "I’ve created this document to demonstrate a useful approach for systematic reporting when you have data that resides in multiple locations. This approach allows organizations to avoid the potential pitfalls of transcribing totals and percentages by hand, supporting the continued accuracy and consistency of reporting on mission-critical metrics. This approach is possible because companies that host online data platforms (Procare, Qualtrics, etc.) typically publish APIs that allow their users to analyze relevant data directly from statistical analysis programs (like R) using required login credentials.\nIn the examples contained within this document, I pull information on companies in the S&P 500 market index from Wikipedia, which provides general information about the companies that constitute the S&P 500. This approach can be adapted to local reports on student enrollments and learning outcomes, among a variety of other applications."
+  },
+  {
+    "objectID": "projects/project1.html#introduction",
+    "href": "projects/project1.html#introduction",
+    "title": "RMD sample",
+    "section": "",
+    "text": "I’ve created this document to demonstrate a useful approach for systematic reporting when you have data that resides in multiple locations. This approach allows organizations to avoid the potential pitfalls of transcribing totals and percentages by hand, supporting the continued accuracy and consistency of reporting on mission-critical metrics. This approach is possible because companies that host online data platforms (Procare, Qualtrics, etc.) typically publish APIs that allow their users to analyze relevant data directly from statistical analysis programs (like R) using required login credentials.\nIn the examples contained within this document, I pull information on companies in the S&P 500 market index from Wikipedia, which provides general information about the companies that constitute the S&P 500. This approach can be adapted to local reports on student enrollments and learning outcomes, among a variety of other applications."
+  },
+  {
+    "objectID": "projects/project1.html#tables",
+    "href": "projects/project1.html#tables",
+    "title": "RMD sample",
+    "section": "Tables",
+    "text": "Tables\nBelow you’ll see a sample of what the underlying Wikipedia table looks like. We’ll be using this table to report on the general construction and key characteristics of the S&P 500 index.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nsymbol\nsecurity\nGICS_sector\nGICS_subindustry\nhq\ndate_added\nCIK\nfounded\n\n\n\n\nMMM\n3M\nIndustrials\nIndustrial Conglomerates\nSaint Paul, Minnesota\n1957-03-04\n0000066740\n1902\n\n\nAOS\nA. O. Smith\nIndustrials\nBuilding Products\nMilwaukee, Wisconsin\n2017-07-26\n0000091142\n1916\n\n\nABT\nAbbott Laboratories\nHealth Care\nHealth Care Equipment\nNorth Chicago, Illinois\n1957-03-04\n0000001800\n1888\n\n\nABBV\nAbbVie\nHealth Care\nBiotechnology\nNorth Chicago, Illinois\n2012-12-31\n0001551152\n2013 (1888)\n\n\nACN\nAccenture\nInformation Technology\nIT Consulting & Other Services\nDublin, Ireland\n2011-07-06\n0001467373\n1989\n\n\nADBE\nAdobe Inc.\nInformation Technology\nApplication Software\nSan Jose, California\n1997-05-05\n0000796343\n1982\n\n\n\n\n\nUsing the information contained in the table, we can look at & compare counts across groups, filter subgroups for closer analysis (e.g., examine student outcomes at a specific site), and highlight any information that the leadership team identifies as especially important."
+  },
+  {
+    "objectID": "projects/project1.html#charts",
+    "href": "projects/project1.html#charts",
+    "title": "RMD sample",
+    "section": "Charts",
+    "text": "Charts\nThe bar graph below shows counts by sector across the S&P 500 companies. In an education setting, such a chart could show student enrollments across sites, changes in enrollment over a specific time frame across those sites, or a plethora of other useful information."
+  },
+  {
+    "objectID": "projects/project1.html#embedding-data",
+    "href": "projects/project1.html#embedding-data",
+    "title": "RMD sample",
+    "section": "Embedding data",
+    "text": "Embedding data\nIt’s also possible to embed calculated totals within the text of the report. This allows for the seamless updating of counts for common items (e.g., average counts, test scores) over time without needing to transcribe anything by hand.\n\nCalculated totals & percentages\nHere’s a simple example of the types of underlying calculations that could occur, including group counts and percentages.\n\n\n\n\n\nGICS_sector\ncount\npct\n\n\n\n\nIndustrials\n78\n16%\n\n\nFinancials\n73\n15%\n\n\nInformation Technology\n69\n14%\n\n\nHealth Care\n60\n12%\n\n\nConsumer Discretionary\n51\n10%\n\n\nConsumer Staples\n38\n8%\n\n\nReal Estate\n31\n6%\n\n\nUtilities\n31\n6%\n\n\nMaterials\n26\n5%\n\n\nCommunication Services\n23\n5%\n\n\nEnergy\n23\n5%\n\n\n\n\n\n\n\nEmbedding data in descriptions and explanations\nAfter calculations are complete, we can call out specific data points of interest and embed them within our reports. The paragraph below shows how such embedded totals would look in the report (embedded date/time, data, and totals italicized for emphasis):\n\nThe list of S&P 500 firms, as of April 15 2025, includes Industrials, Financials, Information Technology, and Health Care as its largest sectors. These sectors currently constitute 16%, 15%, 14%, and 12% of the total number of firms, respectively.\n\nHere’s an example without italics:\n\nThe list of S&P 500 firms, as of April 15 2025, includes Industrials, Financials, Information Technology, and Health Care as its largest sectors. These sectors currently constitute 16%, 15%, 14%, and 12% of the total number of firms, respectively."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "my-portfolio",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+  }
+]
