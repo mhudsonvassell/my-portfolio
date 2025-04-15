@@ -1,0 +1,101 @@
+---
+title: "RMD sample"
+author: "Michael Hudson-Vassell"
+date: "2023-10-08"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+library(tidyverse)
+library(timetk)
+library(rvest)  # required for web scraping
+library(knitr)
+library(scales)
+library(lubridate)
+
+```
+
+## Introduction
+
+I've created this document to demonstrate a useful approach for systematic reporting when you have data that resides in multiple locations. This approach allows organizations to avoid the potential pitfalls of transcribing totals and percentages by hand, supporting the continued accuracy and consistency of reporting on mission-critical metrics. This approach is possible because companies that host online data platforms (Procare, Qualtrics, etc.) typically publish APIs that allow their users to analyze relevant data directly from statistical analysis programs (like R) using required login credentials.
+
+In the examples contained within this document, I pull information on companies in the S&P 500 market index from Wikipedia, which provides general information about the companies that constitute the S&P 500. This approach can be adapted to local reports on student enrollments and learning outcomes, among a variety of other applications.
+
+```{r get Wiki data, echo=FALSE}
+# Go to the website and read the html page
+url <- "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
+url <- read_html(url)
+
+# Get the correct data table, 
+# We want the table which has
+# the constituents
+wiki_data <- url %>%
+  html_nodes("#constituents td") %>%
+  html_text()
+
+# After getting the data
+# Convert the vector into a matrix
+
+wiki_data <- matrix(wiki_data, ncol = 8, byrow = TRUE)
+
+# Convert the matrix into a tibble
+wiki_data <- data.frame(wiki_data, stringsAsFactors = FALSE) %>%
+  tk_tbl()
+
+#rename columns
+colnames(wiki_data) <- c("symbol","security","GICS_sector",
+                        "GICS_subindustry","hq","date_added",
+                        "CIK","founded")
+```
+
+## Tables
+
+Below you'll see a sample of what the underlying Wikipedia table looks like. We'll be using this table to report on the general construction and key characteristics of the S&P 500 index.
+
+```{r wiki head, echo=FALSE}
+kable(head(wiki_data))
+```
+
+Using the information contained in the table, we can look at & compare counts across groups, filter subgroups for closer analysis (e.g., examine student outcomes at a specific site), and highlight any information that the leadership team identifies as especially important.
+
+## Charts
+
+The bar graph below shows counts by sector across the S&P 500 companies. In an education setting, such a chart could show student enrollments across sites, changes in enrollment over a specific time frame across those sites, or a plethora of other useful information.
+
+```{r wiki counts plot, echo=FALSE}
+# create bar blot of SP500 firms by sector
+ggplot(wiki_data, aes(x=GICS_sector, fill=GICS_sector))+
+  geom_bar(stat="count") +
+  theme(axis.text.x = element_text(angle = 90))
+```
+
+## Embedding data
+
+It's also possible to embed calculated totals within the text of the report. This allows for the seamless updating of counts for common items (e.g., average counts, test scores) over time without needing to transcribe anything by hand.
+
+### Calculated totals & percentages
+
+Here's a simple example of the types of underlying calculations that could occur, including group counts and percentages.
+
+```{r wiki counts calc, echo=FALSE}
+# count SP500 firms by sector
+wiki_counts <- wiki_data %>%
+  group_by(GICS_sector) %>%
+  summarize(count = n()) %>%
+  arrange(desc(count))%>%
+  ungroup() %>%
+  mutate(pct = percent(count/sum(count),accuracy=1))
+
+kable(wiki_counts)
+```
+
+### Embedding data in descriptions and explanations
+
+After calculations are complete, we can call out specific data points of interest and embed them within our reports. The paragraph below shows how such embedded totals would look in the report **(embedded date/time, data, and totals italicized for emphasis):**
+
+> The list of S&P 500 firms, as of *`r format(Sys.Date(), format = "%B %d %Y")`,* includes *`r wiki_counts$GICS_sector[1]`,* *`r wiki_counts$GICS_sector[2]`,* *`r wiki_counts$GICS_sector[3]`,* and *`r wiki_counts$GICS_sector[4]`* as its largest sectors. These sectors currently constitute *`r wiki_counts$pct[1]`,* *`r wiki_counts$pct[2]`,* *`r wiki_counts$pct[3]`,* and *`r wiki_counts$pct[4]`* of the total number of firms, respectively.
+
+**Here's an example without italics:**
+
+> The list of S&P 500 firms, as of `r format(Sys.Date(), format = "%B %d %Y")`, includes `r wiki_counts$GICS_sector[1]`, `r wiki_counts$GICS_sector[2]`, `r wiki_counts$GICS_sector[3]`, and `r wiki_counts$GICS_sector[4]` as its largest sectors. These sectors currently constitute `r wiki_counts$pct[1]`, `r wiki_counts$pct[2]`, `r wiki_counts$pct[3]`, and `r wiki_counts$pct[4]` of the total number of firms, respectively.

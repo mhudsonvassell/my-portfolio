@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Michael Hudson-Vassell">
+<meta name="dcterms.date" content="2023-10-08">
 
-<title>About Me – My Data Portfolio</title>
+<title>RMD sample – My Data Portfolio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -94,7 +96,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./about.html" aria-current="page"> 
+    <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -132,7 +134,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#skills" id="toc-skills" class="nav-link active" data-scroll-target="#skills">Skills:</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#tables" id="toc-tables" class="nav-link" data-scroll-target="#tables">Tables</a></li>
+  <li><a href="#charts" id="toc-charts" class="nav-link" data-scroll-target="#charts">Charts</a></li>
+  <li><a href="#embedding-data" id="toc-embedding-data" class="nav-link" data-scroll-target="#embedding-data">Embedding data</a>
+  <ul class="collapse">
+  <li><a href="#calculated-totals-percentages" id="toc-calculated-totals-percentages" class="nav-link" data-scroll-target="#calculated-totals-percentages">Calculated totals &amp; percentages</a></li>
+  <li><a href="#embedding-data-in-descriptions-and-explanations" id="toc-embedding-data-in-descriptions-and-explanations" class="nav-link" data-scroll-target="#embedding-data-in-descriptions-and-explanations">Embedding data in descriptions and explanations</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -141,14 +150,26 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">About Me</h1>
+<h1 class="title">RMD sample</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Michael Hudson-Vassell </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 8, 2023</p>
+    </div>
+  </div>
   
     
   </div>
@@ -158,16 +179,209 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Welcome to my portfolio. I’m a passionate data analyst and finance researcher with experience in various industries. I specialize in data analysis, machine learning, and R programming.</p>
-<section id="skills" class="level2">
-<h2 class="anchored" data-anchor-id="skills">Skills:</h2>
-<ul>
-<li>Data Visualization</li>
-<li>Machine Learning</li>
-<li>Data Cleaning</li>
-</ul>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>I’ve created this document to demonstrate a useful approach for systematic reporting when you have data that resides in multiple locations. This approach allows organizations to avoid the potential pitfalls of transcribing totals and percentages by hand, supporting the continued accuracy and consistency of reporting on mission-critical metrics. This approach is possible because companies that host online data platforms (Procare, Qualtrics, etc.) typically publish APIs that allow their users to analyze relevant data directly from statistical analysis programs (like R) using required login credentials.</p>
+<p>In the examples contained within this document, I pull information on companies in the S&amp;P 500 market index from Wikipedia, which provides general information about the companies that constitute the S&amp;P 500. This approach can be adapted to local reports on student enrollments and learning outcomes, among a variety of other applications.</p>
+</section>
+<section id="tables" class="level2">
+<h2 class="anchored" data-anchor-id="tables">Tables</h2>
+<p>Below you’ll see a sample of what the underlying Wikipedia table looks like. We’ll be using this table to report on the general construction and key characteristics of the S&amp;P 500 index.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 5%">
+<col style="width: 14%">
+<col style="width: 16%">
+<col style="width: 22%">
+<col style="width: 17%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">symbol</th>
+<th style="text-align: left;">security</th>
+<th style="text-align: left;">GICS_sector</th>
+<th style="text-align: left;">GICS_subindustry</th>
+<th style="text-align: left;">hq</th>
+<th style="text-align: left;">date_added</th>
+<th style="text-align: left;">CIK</th>
+<th style="text-align: left;">founded</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">MMM</td>
+<td style="text-align: left;">3M</td>
+<td style="text-align: left;">Industrials</td>
+<td style="text-align: left;">Industrial Conglomerates</td>
+<td style="text-align: left;">Saint Paul, Minnesota</td>
+<td style="text-align: left;">1957-03-04</td>
+<td style="text-align: left;">0000066740</td>
+<td style="text-align: left;">1902</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AOS</td>
+<td style="text-align: left;">A. O. Smith</td>
+<td style="text-align: left;">Industrials</td>
+<td style="text-align: left;">Building Products</td>
+<td style="text-align: left;">Milwaukee, Wisconsin</td>
+<td style="text-align: left;">2017-07-26</td>
+<td style="text-align: left;">0000091142</td>
+<td style="text-align: left;">1916</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ABT</td>
+<td style="text-align: left;">Abbott Laboratories</td>
+<td style="text-align: left;">Health Care</td>
+<td style="text-align: left;">Health Care Equipment</td>
+<td style="text-align: left;">North Chicago, Illinois</td>
+<td style="text-align: left;">1957-03-04</td>
+<td style="text-align: left;">0000001800</td>
+<td style="text-align: left;">1888</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ABBV</td>
+<td style="text-align: left;">AbbVie</td>
+<td style="text-align: left;">Health Care</td>
+<td style="text-align: left;">Biotechnology</td>
+<td style="text-align: left;">North Chicago, Illinois</td>
+<td style="text-align: left;">2012-12-31</td>
+<td style="text-align: left;">0001551152</td>
+<td style="text-align: left;">2013 (1888)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ACN</td>
+<td style="text-align: left;">Accenture</td>
+<td style="text-align: left;">Information Technology</td>
+<td style="text-align: left;">IT Consulting &amp; Other Services</td>
+<td style="text-align: left;">Dublin, Ireland</td>
+<td style="text-align: left;">2011-07-06</td>
+<td style="text-align: left;">0001467373</td>
+<td style="text-align: left;">1989</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ADBE</td>
+<td style="text-align: left;">Adobe Inc.</td>
+<td style="text-align: left;">Information Technology</td>
+<td style="text-align: left;">Application Software</td>
+<td style="text-align: left;">San Jose, California</td>
+<td style="text-align: left;">1997-05-05</td>
+<td style="text-align: left;">0000796343</td>
+<td style="text-align: left;">1982</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Using the information contained in the table, we can look at &amp; compare counts across groups, filter subgroups for closer analysis (e.g., examine student outcomes at a specific site), and highlight any information that the leadership team identifies as especially important.</p>
+</section>
+<section id="charts" class="level2">
+<h2 class="anchored" data-anchor-id="charts">Charts</h2>
+<p>The bar graph below shows counts by sector across the S&amp;P 500 companies. In an education setting, such a chart could show student enrollments across sites, changes in enrollment over a specific time frame across those sites, or a plethora of other useful information.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="project1_files/figure-html/wiki counts plot-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="embedding-data" class="level2">
+<h2 class="anchored" data-anchor-id="embedding-data">Embedding data</h2>
+<p>It’s also possible to embed calculated totals within the text of the report. This allows for the seamless updating of counts for common items (e.g., average counts, test scores) over time without needing to transcribe anything by hand.</p>
+<section id="calculated-totals-percentages" class="level3">
+<h3 class="anchored" data-anchor-id="calculated-totals-percentages">Calculated totals &amp; percentages</h3>
+<p>Here’s a simple example of the types of underlying calculations that could occur, including group counts and percentages.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">GICS_sector</th>
+<th style="text-align: right;">count</th>
+<th style="text-align: left;">pct</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Industrials</td>
+<td style="text-align: right;">78</td>
+<td style="text-align: left;">16%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Financials</td>
+<td style="text-align: right;">73</td>
+<td style="text-align: left;">15%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Information Technology</td>
+<td style="text-align: right;">69</td>
+<td style="text-align: left;">14%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Health Care</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: left;">12%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Consumer Discretionary</td>
+<td style="text-align: right;">51</td>
+<td style="text-align: left;">10%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Consumer Staples</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: left;">8%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Real Estate</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: left;">6%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Utilities</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: left;">6%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Materials</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: left;">5%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Communication Services</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: left;">5%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Energy</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: left;">5%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="embedding-data-in-descriptions-and-explanations" class="level3">
+<h3 class="anchored" data-anchor-id="embedding-data-in-descriptions-and-explanations">Embedding data in descriptions and explanations</h3>
+<p>After calculations are complete, we can call out specific data points of interest and embed them within our reports. The paragraph below shows how such embedded totals would look in the report <strong>(embedded date/time, data, and totals italicized for emphasis):</strong></p>
+<blockquote class="blockquote">
+<p>The list of S&amp;P 500 firms, as of <em>April 15 2025,</em> includes <em>Industrials,</em> <em>Financials,</em> <em>Information Technology,</em> and <em>Health Care</em> as its largest sectors. These sectors currently constitute <em>16%,</em> <em>15%,</em> <em>14%,</em> and <em>12%</em> of the total number of firms, respectively.</p>
+</blockquote>
+<p><strong>Here’s an example without italics:</strong></p>
+<blockquote class="blockquote">
+<p>The list of S&amp;P 500 firms, as of April 15 2025, includes Industrials, Financials, Information Technology, and Health Care as its largest sectors. These sectors currently constitute 16%, 15%, 14%, and 12% of the total number of firms, respectively.</p>
+</blockquote>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
